@@ -1,6 +1,6 @@
 {
-  "name": "rudymas/emvc_email",
-  "description": "PHP class Emvc_Email for the EasyMVC Framework",
+  "name": "easymvc/email",
+  "description": "PHP Class Email for the EasyMVC Framework",
   "version": "1.4.0",
   "type": "library",
   "license": "GPL-3.0",
@@ -20,7 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "RudyMas\\Emvc_Email\\": "src/"
+      "EasyMVC\\Email\\": "src/"
     }
   }
 }

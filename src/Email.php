@@ -1,6 +1,6 @@
 <?php
 
-namespace RudyMas\Emvc_Email;
+namespace EasyMVC\Email;
 
 use Latte\Engine;
 use Nette\Mail\Message;
@@ -14,9 +14,9 @@ use Nette\Mail\SmtpMailer;
  * @copyright   2017-2018, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
  * @version     1.4.0
- * @package     RudyMas\Rmvc_Email
+ * @package     EasyMVC\Email
  */
-class Emvc_Email
+class Email
 {
     private $email;
     private $from;
@@ -135,4 +135,4 @@ class Emvc_Email
     }
 }
 
-/** End of File: Emvc_Email.php **/
+/** End of File: Email.php **/

@@ -1,16 +1,16 @@
-# PHP class Emvc_Email for the EasyMVC Framework
+# PHP Class Email for the EasyMVC Framework
 
-This is the Emvc_Email class which is used by EasyMVC.
+This is the Class Email which is used by EasyMVC.
 
 ## Installation
 Install the package using composer.
 ```
-composer require rudymas/emvc_email
+composer require easymvc/email
 ```
 
 or by editing composer.json yourself and adding:
 ```
 "require": {
-    "rudymas/emvc_email": "*"
+    "easymvc/email": "*"
 }
 ```
