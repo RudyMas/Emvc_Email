@@ -1,7 +1,7 @@
 {
   "name": "easymvc/email",
   "description": "PHP Class Email for the EasyMVC Framework",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "type": "library",
   "license": "GPL-3.0",
   "authors": [
@@ -19,6 +19,9 @@
     "latte/latte": "^2"
   },
   "autoload": {
+    "classmap": [
+      "src/"
+    ],
     "psr-4": {
       "EasyMVC\\Email\\": "src/"
     }
