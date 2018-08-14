@@ -13,7 +13,7 @@ use Nette\Mail\SmtpMailer;
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2017-2018, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     2.0.0
+ * @version     2.1.0.27
  * @package     EasyMVC\Email
  */
 class Email
@@ -40,23 +40,19 @@ class Email
     /**
      * Use this function when you use it in your own project
      *
-     * @param string $use_smtp
-     * @param string $email_host
-     * @param string $email_username
-     * @param string $email_password
-     * @param string $email_security
+     * @param string $host
+     * @param string $username
+     * @param string $password
+     * @param string $security
+     * @param bool $use_smtp
      */
-    public function setup(string $use_smtp,
-                          string $email_host,
-                          string $email_username,
-                          string $email_password,
-                          string $email_security): void
+    public function setup(string $host, string $username, string $password, string $security, bool $use_smtp = true): void
     {
         $this->use_smtp = $use_smtp;
-        $this->email_host = $email_host;
-        $this->email_username = $email_username;
-        $this->email_password = $email_password;
-        $this->email_security = $email_security;
+        $this->email_host = $host;
+        $this->email_username = $username;
+        $this->email_password = $password;
+        $this->email_security = $security;
     }
 
     /**
@@ -74,40 +70,47 @@ class Email
     /**
      * For setting the sender of the E-mail
      *
-     * @param string $email_from
+     * @param string $from
      */
-    public function setFrom(string $email_from): void
+    public function setFrom(string $from = EMAIL_FROM): void
     {
-        $this->from = $email_from;
+        $this->from = $from;
     }
 
     /**
      * Prepare a plain text E-mail
      *
-     * @param array $email_to
-     * @param array|null $email_cc
-     * @param array|null $email_bcc
+     * @param array $to
      * @param string $subject
      * @param string $body
+     * @param array|null $attachment
+     * @param array|null $cc
+     * @param array $bcc
      */
-    public function setTextMessage(array $email_to,
-                                   array $email_cc = null,
-                                   array $email_bcc = EMAIL_BCC,
+    public function setTextMessage(array $to,
                                    string $subject,
-                                   string $body): void
+                                   string $body,
+                                   array $attachment = null,
+                                   array $cc = null,
+                                   array $bcc = EMAIL_BCC): void
     {
         $this->email->setFrom($this->from);
-        foreach ($email_to as $value) {
+        foreach ($to as $value) {
             $this->email->addTo($value);
         }
-        if ($email_cc != null) {
-            foreach ($email_cc as $value) {
+        if ($cc != null) {
+            foreach ($cc as $value) {
                 $this->email->addCc($value);
             }
         }
-        if ($email_bcc != null) {
-            foreach ($email_bcc as $value) {
+        if ($bcc != null) {
+            foreach ($bcc as $value) {
                 $this->email->addBcc($value);
+            }
+        }
+        if ($attachment != null) {
+            foreach ($attachment as $file) {
+                $this->email->addAttachment($file);
             }
         }
         $this->email->setSubject($subject);
@@ -117,30 +120,37 @@ class Email
     /**
      * Prepare a HTML E-mail
      *
-     * @param array $email_to
-     * @param array|null $email_cc
-     * @param array|null $email_bcc
+     * @param array $to
      * @param string $subject
      * @param string $body
+     * @param array|null $attachment
+     * @param array|null $cc
+     * @param array|null $bcc
      */
-    public function setHtmlMessage(array $email_to,
-                                   array $email_cc = null,
-                                   array $email_bcc = EMAIL_BCC,
+    public function setHtmlMessage(array $to,
                                    string $subject,
-                                   string $body): void
+                                   string $body,
+                                   array $attachment = null,
+                                   array $cc = null,
+                                   array $bcc = EMAIL_BCC): void
     {
         $this->email->setFrom($this->from);
-        foreach ($email_to as $value) {
+        foreach ($to as $value) {
             $this->email->addTo($value);
         }
-        if ($email_cc != null) {
-            foreach ($email_cc as $value) {
+        if ($cc != null) {
+            foreach ($cc as $value) {
                 $this->email->addCc($value);
             }
         }
-        if ($email_bcc != null) {
-            foreach ($email_bcc as $value) {
+        if ($bcc != null) {
+            foreach ($bcc as $value) {
                 $this->email->addBcc($value);
+            }
+        }
+        if ($attachment != null) {
+            foreach ($attachment as $file) {
+                $this->email->addAttachment($file);
             }
         }
         $this->email->setSubject($subject);
@@ -172,11 +182,11 @@ class Email
      * @param array $data
      * @return string
      */
-    public function emvc_renderHtml(string $latteFile, array $data): string
+    public function emvcRenderHtml(string $latteFile, array $data): string
     {
         $latte = new Engine();
         $latte->setTempDirectory($_SERVER['DOCUMENT_ROOT'] . BASE_URL . '/tmp/latte');
-        return $latte->renderToString($_SERVER['DOCUMENT_ROOT'] . BASE_URL . '/public/latte/' . $latteFile, $data);
+        return $latte->renderToString($_SERVER['DOCUMENT_ROOT'] . BASE_URL . '/private/latte/' . $latteFile, $data);
     }
 
     /**
@@ -194,5 +204,3 @@ class Email
         return $latte->renderToString($latteFile, $data);
     }
 }
-
-/** End of File: Email.php **/
