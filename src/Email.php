@@ -11,9 +11,9 @@ use Nette\Mail\SmtpMailer;
  * Class Emvc_Email (PHP version 7.1)
  *
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
- * @copyright   2017-2018, rmsoft.be. (http://www.rmsoft.be/)
+ * @copyright   2017-2019, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     2.1.0.27
+ * @version     2.1.1.28
  * @package     EasyMVC\Email
  */
 class Email
@@ -63,7 +63,7 @@ class Email
         $this->use_smtp = USE_SMTP;
         $this->email_host = EMAIL_HOST;
         $this->email_username = EMAIL_USERNAME;
-        $this->email_password = EMAIL_password;
+        $this->email_password = EMAIL_PASSWORD;
         $this->email_security = EMAIL_SECURITY;
     }
 
