@@ -8,12 +8,12 @@ use Nette\Mail\SendmailMailer;
 use Nette\Mail\SmtpMailer;
 
 /**
- * Class Emvc_Email (PHP version 7.1)
+ * Class Emvc_Email (PHP version 7.2)
  *
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2017-2019, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     2.1.0.29
+ * @version     2.1.1.0
  * @package     EasyMVC\Email
  */
 class Email
