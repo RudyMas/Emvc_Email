@@ -18,11 +18,8 @@
     "latte/latte": "^2"
   },
   "autoload": {
-    "classmap": [
-      "src/"
-    ],
     "psr-4": {
-      "EasyMVC\\Email\\": "src/"
+      "EasyMVC\\": "src/"
     }
   }
 }

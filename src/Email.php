@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyMVC\Email;
+namespace EasyMVC;
 
 use Latte\Engine;
 use Nette\Mail\Message;
@@ -13,7 +13,7 @@ use Nette\Mail\SmtpMailer;
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2017-2018, rmsoft.be. (http://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     2.1.0.27
+ * @version     2.1.0.28
  * @package     EasyMVC\Email
  */
 class Email
